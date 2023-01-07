@@ -1,0 +1,36 @@
+body{
+}
+.button{
+
+}
+.background{
+    background-image: url("https://i.pinimg.com/originals/71/9e/80/719e80760999b4c355a723224120eb07.png");
+    background-size: 100%;
+    background-attachment: fixed;
+}
+.press{
+    background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/06/HD-Fitness-Backgrounds-For-Desktop.jpg");
+    background-size: 100%;
+    background-attachment: fixed;
+}
+.card_center {
+    width: 100%;
+    height: 50px;
+    background: coral;
+    margin: 0 8px -8px -8px;
+
+}
+.list {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    height: 50px;
+    color: white;
+}
+.b{
+    width: 600px;
+    height:200px;
+    margin-left: 700px;
+    margin-top: 100px;
+}
