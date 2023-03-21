@@ -10,4 +10,6 @@ public interface UserService {
     void deleteUser(String id);
 
     String getCurrentUsername();
+
+    String getRole(User user);
 }

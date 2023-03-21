@@ -2,7 +2,6 @@ package com.example.diplom.controller;
 
 import com.example.diplom.model.User;
 import com.example.diplom.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,9 +15,19 @@ import java.util.logging.Logger;
 
 @Controller
 public class UserController {
-    @Autowired
-    private UserService userService;
+
+    private final UserService userService;
     private Logger logger = Logger.getLogger(getClass().getName());
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping("/home")
+    public String home(Model model) {
+        return "home";
+    }
+
     @GetMapping("/register")
     public String registration(Model model) {
         model.addAttribute("user", new User());
@@ -53,13 +62,14 @@ public class UserController {
     }
 
     @PostMapping("/delete")
-    public String DeleteUser(@RequestParam(value = "id") String id){
+    public String DeleteUser(@RequestParam(value = "id") String id) {
         userService.deleteUser(id);
         return "home";
     }
+
     @GetMapping("/profile")
-    public String profile(Model model){
-        model.addAttribute("user",userService.findByUsername(userService.getCurrentUsername()));
+    public String profile(Model model) {
+        model.addAttribute("user", userService.findByUsername(userService.getCurrentUsername()));
         return "profile";
     }
 }

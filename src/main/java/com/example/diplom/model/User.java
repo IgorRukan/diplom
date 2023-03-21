@@ -20,6 +20,25 @@ public class User {
     @ManyToMany
     private Set<Role> roles;
 
+    @OneToMany (cascade = CascadeType.ALL,fetch = FetchType.LAZY,
+    mappedBy = "user")
+    private List<Exercises> exercises = new ArrayList<>();
+
+    @OneToMany (cascade = CascadeType.ALL,fetch = FetchType.LAZY,
+            mappedBy = "users")
+    private List<Value> values  = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Note> notes;
+
+    public List<Exercises> getExercises() {
+        return exercises;
+    }
+
+    public void setExercises(List<Exercises> exercises) {
+        this.exercises = exercises;
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,5 +1,6 @@
 package com.example.diplom.service.impl;
 
+import com.example.diplom.model.Role;
 import com.example.diplom.model.User;
 import com.example.diplom.repository.RoleRepository;
 import com.example.diplom.repository.UserRepository;
@@ -33,6 +34,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByUsername(username);
     }
 
+
     @Override
     public void deleteUser(String id) {
         userRepository.deleteById(id);
@@ -41,5 +43,12 @@ public class UserServiceImpl implements UserService {
     public String getCurrentUsername() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return auth.getName();
+    }
+
+    @Override
+    public String getRole(User user) {
+        Role role;
+        role = roleRepository.findByUsers(user);
+        return role.getName();
     }
 }
